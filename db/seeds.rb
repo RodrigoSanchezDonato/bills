@@ -6,14 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 require 'open-uri'
 require 'nokogiri'
 
 puts 'creating database'
 
 def scraper
-
   url = 'https://sapl.camaranh.rs.gov.br/sistema/search/?q=projeto+de+lei&models=materia.materialegislativa'
 
   doc = Nokogiri::HTML(open(url))
@@ -31,9 +29,9 @@ def scraper
   while page <= last_page
     pagination_url = "https://sapl.camaranh.rs.gov.br/sistema/search/?q=projeto%20de%20lei&page=#{page}&models=materia.materialegislativa" # url when pagination is changed, so it receive the page number while looping in order to loop through each page
 
-    puts pagination_url
-    puts "Page: #{page}"
-    puts ''
+    # puts pagination_url
+    # puts "Page: #{page}"
+    # puts ''
     pagination_doc = Nokogiri::HTML(open(pagination_url))
 
     # to pick all the 10 items per page
@@ -43,8 +41,11 @@ def scraper
 
       bills << element.text
 
-      puts "added element #{element.text}"
-      puts ''
+      bill = Bill.new
+      bill.description = element.text
+      bill.save
+
+      puts bill.description
     end
     page += 1
   end

@@ -1,0 +1,6 @@
+<%= link_to "Scraper Bills", scraper_bills_path, method: "POST" %>
+<% @bills[0..5].each do |bill| %>
+  <%= link_to bill_path(bill) do %>
+    <% bill.description %>
+  <%end %>
+<%end %>

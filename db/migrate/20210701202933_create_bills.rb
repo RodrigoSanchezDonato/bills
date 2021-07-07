@@ -1,7 +1,8 @@
 class CreateBills < ActiveRecord::Migration[6.0]
   def change
     create_table :bills do |t|
-      t.text :materia_lesgislativa
+      t.string :title
+      t.text :description
 
       t.timestamps
     end
