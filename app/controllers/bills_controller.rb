@@ -1,5 +1,6 @@
 require 'Nokogiri'
 require 'open-uri'
+require 'will_paginate/array'
 class BillsController < ApplicationController
 
   def show
@@ -7,7 +8,8 @@ class BillsController < ApplicationController
   end
 
   def index
-    @bills = Bill.all
+    #@bills = Bill.all
+    @bills = Bill.paginate(page: params[:page], per_page: 15)
   end
 
   def scraper

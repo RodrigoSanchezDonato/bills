@@ -1,6 +1,11 @@
-<%= link_to "Scraper Bills", scraper_bills_path, method: "POST" %>
-<% @bills[0..5].each do |bill| %>
-  <%= link_to bill_path(bill) do %>
-    <% bill.description %>
+
+<ul>
+    <li><%= link_to "Below are all the links to Law Project", scraper_bills_path, method: "POST" %></li>
+  <% @bills[0..100].each do |bill| %>
+    <p> <%= link_to bill_path(bill) do %>
+     <% bill.description %>
+    <%end %>
   <%end %>
-<%end %>
+  <%= will_paginate(@bill) %>
+</p>
+</ul>

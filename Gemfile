@@ -22,7 +22,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'nokogiri'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+#will_paginate is a pagination
+gem 'will_paginate', '~> 3.1.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
